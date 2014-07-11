@@ -1,0 +1,41 @@
+{
+  "name": "hubot-event-hooks",
+  "version": "0.0.1",
+  "author": {
+    "name": "John Hammerlund",
+    "url": "http://hammertime.io/"
+  },
+  "contributors": [
+    {
+      "name": "John Hammerlund",
+      "email": "johnhammerlund@gmail.com"
+    }
+  ],
+  "keywords": [
+    "hubot",
+    "event",
+    "hooks",
+    "adapter"
+  ],
+  "description": "A hubot adapter event listener that sits inbetween hubot and the desired hubot adapter.",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hammertime38/hubot-event-hooks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Hammertime38/hubot-event-hooks/issues"
+  },
+  "devDependencies": {
+    "coffee-script": ">=1.2.0"
+  },
+  "main": "./src/event-hooks",
+  "engines": {
+    "node": ">=0.4.7"
+  }
+}
