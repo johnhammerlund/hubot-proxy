@@ -27,7 +27,7 @@ class EventHooks extends Adapter
         "#{path}/#{config.adapter}"
       else
         "hubot-#{config.adapter}"
-      @adapter = require(adapterPath).use @
+      @adapter = require adapterPath
     catch err
       throw new Error("#CONFIG_FILE_NAME must have a valid adapter.")
 
