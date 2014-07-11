@@ -22,15 +22,14 @@ class EventHooks extends Adapter
     if not fs.existsSync configFilePath
       throw new Error("#CONFIG_FILE_NAME must be in the root directory of the application.")
     config = require configFilePath
-    try {
+    try
       adapterPath = if config.adapter in HUBOT_DEFAULT_ADAPTERS
         "#{path}/#{config.adapter}"
       else
         "hubot-#{config.adapter}"
       @adapter = require(adapterPath).use @
-    } catch(err) {
+    catch err
       throw new Error("#CONFIG_FILE_NAME must have a valid adapter.")
-    }
 
   # Public: Raw method for sending data back to the chat source. Extend this.
   #
