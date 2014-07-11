@@ -5,6 +5,11 @@ config = null
 
 CONFIG_FILE_NAME = 'adapterEventsConfig'
 
+HUBOT_DEFAULT_ADAPTERS = [
+  'campfire'
+  'shell'
+]
+
 class EventHooks extends Adapter
   # An adapter is a specific interface to a chat source for robots.
   #
@@ -18,7 +23,11 @@ class EventHooks extends Adapter
       throw new Error("#CONFIG_FILE_NAME must be in the root directory of the application.")
     config = require configFilePath
     try {
-      @adapter = require config.adapter
+      adapterPath = if config.adapter in HUBOT_DEFAULT_ADAPTERS
+        "#{path}/#{config.adapter}"
+      else
+        "hubot-#{config.adapter}"
+      @adapter = require(adapterPath).use @
     } catch(err) {
       throw new Error("#CONFIG_FILE_NAME must have a valid adapter.")
     }
