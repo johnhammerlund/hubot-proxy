@@ -161,4 +161,4 @@ class EventHooks extends Adapter
   http: (url) ->
     @adapter.http url
 
-module.exports = EventHooks
+module.exports = EventHooks()
