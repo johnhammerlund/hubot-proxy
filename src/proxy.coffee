@@ -2,14 +2,14 @@
 path = require 'path'
 fs = require 'fs'
 
-CONFIG_FILE_NAME = 'event-hooks-config'
+CONFIG_FILE_NAME = 'adapter-proxy-config'
 
 HUBOT_DEFAULT_ADAPTERS = [
   'campfire'
   'shell'
 ]
 
-class EventHooks extends Adapter
+class AdapterProxy extends Adapter
   # This adapter acts as a proxy between hubot and the real adapter.
   # For full documentation on how to use this proxy, check out the wiki.
   
@@ -19,8 +19,8 @@ class EventHooks extends Adapter
       configFilePath = path.join(process.env.PWD, CONFIG_FILE_NAME + '.js')
     if not fs.existsSync configFilePath
       throw new Error("#{CONFIG_FILE_NAME} must be in the root of the node project.")
-    HooksConfig = require configFilePath
-    @config = new HooksConfig
+    AdapterProxyConfig = require configFilePath
+    @config = new AdapterProxyConfig
     adapterPath = if @config.adapter in HUBOT_DEFAULT_ADAPTERS
       "#{path}/#{@config.adapter}"
     else
@@ -109,4 +109,4 @@ class EventHooks extends Adapter
     @adapter.http url
 
 exports.use = (robot) ->
-  new EventHooks robot
+  new AdapterProxy robot
