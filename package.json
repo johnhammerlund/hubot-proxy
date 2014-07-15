@@ -17,7 +17,7 @@
     "hooks",
     "adapter"
   ],
-  "description": "A hubot adapter event listener that sits inbetween hubot and the desired hubot adapter.",
+  "description": "A hubot adapter proxy that sits inbetween hubot and the desired hubot adapter.",
   "licenses": [
     {
       "type": "MIT",
