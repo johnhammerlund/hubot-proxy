@@ -1,5 +1,5 @@
 {
-  "name": "hubot-event-hooks",
+  "name": "hubot-proxy",
   "version": "0.0.1",
   "author": {
     "name": "John Hammerlund",
@@ -26,15 +26,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Hammertime38/hubot-event-hooks.git"
+    "url": "https://github.com/Hammertime38/hubot-proxy.git"
   },
   "bugs": {
-    "url": "https://github.com/Hammertime38/hubot-event-hooks/issues"
+    "url": "https://github.com/Hammertime38/hubot-proxy/issues"
   },
   "devDependencies": {
     "coffee-script": ">=1.2.0"
   },
-  "main": "./src/event-hooks",
+  "main": "./src/proxy",
   "engines": {
     "node": ">=0.4.7"
   }
