@@ -3,7 +3,9 @@ hubot-proxy
 
 A hubot adapter event listener that sits inbetween hubot and the desired hubot adapter.
 
-I'll make this prettier and easier to understand in the near future. Basically, just add a config file to the root of the module called adapter-proxy-config.coffee/.js and configure it as such:
+The proxied events are dispatched to a config object that behaves like an adapter observer.  To use this adapter, you need to include this in the base directory for the node application/package as `adapter-proxy-config.coffee` or `adapter-proxy-config.js`.
+
+A simple example:
 
 ```coffee
 class MyProxyConfig
@@ -22,6 +24,8 @@ class MyProxyConfig
   }
 module.exports = MyProxyConfig
 ```
+
+Where `adapter` provides the underlying hubot adapter to proxy and `events` defines actions for observed adapter events.
 
 Currently supported events:
 
