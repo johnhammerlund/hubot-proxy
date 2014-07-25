@@ -31,7 +31,6 @@ class AdapterProxy extends Adapter
   # Overridden
   send: (envelope, strings...) ->
     stringsForSend = @config.events.stringsForSend?(@adapter, envelope, strings...) || strings
-    console.log @config.events
     if not @config.events.shouldSend or @config.events.shouldSend(@adapter, envelope, stringsForSend...)
       @config.events.willSend?(@adapter, envelope, stringsForSend...)
       @adapter.send?(envelope, stringsForSend...)
@@ -84,7 +83,6 @@ class AdapterProxy extends Adapter
 
   # Overridden
   receive: (message) ->
-    console.log message
     if not @config.events.shouldReceive or @config.events.shouldReceive(@adapter, message)
       @config.events.willReceive?(@adapter, message)
       @adapter.receive message
