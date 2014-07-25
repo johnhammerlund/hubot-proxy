@@ -21,6 +21,10 @@ class MyProxyConfig
       #do stuff before the message is sent
       ...
     ...
+    
+    stringsForSend: (adapter, envelope, originalStrings...) ->
+      #Modify messages that hubot responds with
+      return originalStrings.map((obj) -> obj.toLowerCase())
   }
 module.exports = MyProxyConfig
 ```
@@ -31,18 +35,23 @@ Currently supported events:
 
 - shouldSend
 - willSend
+- stringsForSend
 - didSend
 - shouldEmote
 - willEmote
+- stringsForEmote
 - didEmote
 - shouldReply
 - willReply
+- stringsForReply
 - didReply
 - shouldTopic
 - willTopic
+- stringsForTopic
 - didTopic
 - shouldPlay
 - willPlay
+- stringsForPlay
 - didPlay
 - shouldReceive
 - willReceive

@@ -30,38 +30,44 @@ class AdapterProxy extends Adapter
 
   # Overridden
   send: (envelope, strings...) ->
-    if not @config.events.shouldSend or @config.events.shouldSend(@adapter, envelope, strings...)
-      @config.events.willSend?(@adapter, envelope, strings...)
-      @adapter.send?(envelope, strings...)
-      @config.events.didSend?(@adapter, envelope, strings...)
+    stringsForSend = @config.events.stringsForSend?(@adapter, envelope, strings...) || strings
+    console.log @config.events
+    if not @config.events.shouldSend or @config.events.shouldSend(@adapter, envelope, stringsForSend...)
+      @config.events.willSend?(@adapter, envelope, stringsForSend...)
+      @adapter.send?(envelope, stringsForSend...)
+      @config.events.didSend?(@adapter, envelope, stringsForSend...)
 
   # Overridden
   emote: (envelope, strings...) ->
-    if not @config.events.shouldEmote or @config.events.shouldEmote(@adapter, envelope, strings...)
-      @config.events.willEmote?(@adapter, envelope, strings...)
-      @adapter.emote?(envelope, strings...)
-      @config.events.didEmote?(@adapter, envelope, strings...)
+    stringsForEmote = @config.events.stringsForEmote?(@adapter, envelope, strings...) || strings
+    if not @config.events.shouldEmote or @config.events.shouldEmote(@adapter, envelope, stringsForEmote...)
+      @config.events.willEmote?(@adapter, envelope, stringsForEmote...)
+      @adapter.emote?(envelope, stringsForEmote...)
+      @config.events.didEmote?(@adapter, envelope, stringsForEmote...)
 
   # Overridden
   reply: (envelope, strings...) ->
-    if not @config.events.shouldReply or @config.events.shouldReply(@adapter, envelope, strings...)
-      @config.events.willReply?(@adapter, envelope, strings...)
-      @adapter.reply?(envelope, strings...)
-      @config.events.didReply?(@adapter, envelope, strings...)
+    stringsForReply = @config.events.stringsForReply?(@adapter, envelope, strings...) || strings
+    if not @config.events.shouldReply or @config.events.shouldReply(@adapter, envelope, stringsForReply...)
+      @config.events.willReply?(@adapter, envelope, stringsForReply...)
+      @adapter.reply?(envelope, stringsForReply...)
+      @config.events.didReply?(@adapter, envelope, stringsForReply...)
 
   # Overridden
   topic: (envelope, strings...) ->
-    if not @config.events.shouldTopic or @config.events.shouldTopic(@adapter, envelope, strings...)
-      @config.events.willTopic?(@adapter, envelope, strings...)
-      @adapter.topic?(envelope, strings...)
-      @config.events.didTopic?(@adapter, envelope, strings...)
+    stringsForTopic = @config.events.stringsForTopic?(@adapter, envelope, strings...) || strings
+    if not @config.events.shouldTopic or @config.events.shouldTopic(@adapter, envelope, stringsForTopic...)
+      @config.events.willTopic?(@adapter, envelope, stringsForTopic...)
+      @adapter.topic?(envelope, stringsForTopic...)
+      @config.events.didTopic?(@adapter, envelope, stringsForTopic...)
 
   # Overridden
   play: (envelope, strings...) ->
-    if not @config.events.shouldPlay or @config.events.shouldPlay(@adapter, envelope, strings...)
-      @config.events.willPlay?(@adapter, envelope, strings...)
-      @adapter.play?(envelope, strings...)
-      @config.events.didPlay?(@adapter, envelope, strings...)
+    stringsForPlay = @config.events.stringsForPlay?(@adapter, envelope, strings...) || strings
+    if not @config.events.shouldPlay or @config.events.shouldPlay(@adapter, envelope, stringsForPlay...)
+      @config.events.willPlay?(@adapter, envelope, stringsForPlay...)
+      @adapter.play?(envelope, stringsForPlay...)
+      @config.events.didPlay?(@adapter, envelope, stringsForPlay...)
 
   # Overridden
   run: ->
