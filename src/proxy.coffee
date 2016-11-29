@@ -25,8 +25,7 @@ class AdapterProxy extends Adapter
       "#{path}/#{@config.adapter}"
     else
       "hubot-#{@config.adapter}"
-    @adapter = require(adapterPath).use @
-    @adapter.robot = @robot
+    @adapter = require(adapterPath).use @robot
 
   # Overridden
   send: (envelope, strings...) ->
